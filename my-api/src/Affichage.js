@@ -4,8 +4,8 @@ import axios from 'axios';
 const ListeCartesYuGiOh = () => {
   const [listeCartes, setListeCartes] = useState([]);
   const [termeRecherche, setTermeRecherche] = useState('');
-  const [typeFiltre, setTypeFiltre] = useState('nom'); // Par défaut, tri par nom
-  const [ordreTri, setOrdreTri] = useState('asc'); // Par défaut, tri croissant
+  const [typeFiltre, setTypeFiltre] = useState('nom'); // tri par nom
+  const [ordreTri, setOrdreTri] = useState('asc'); // tri croissant
 
   useEffect(() => {
     const fetchData = async () => {

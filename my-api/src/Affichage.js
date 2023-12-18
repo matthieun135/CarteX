@@ -1,58 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function MyComponent() {
-  const [cardData, setCardData] = useState([]);
+const YuGiOhCardList = () => {
+  const [cardList, setCardList] = useState([]);
 
   useEffect(() => {
-    const fetchCardData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php');
-        if (response.ok) {
-          const data = await response.json();
-          const cards = data.data;
-
-            // Extraire les informations pertinentes des données de la carte
-          const formattedCards = cards.map((card, index) => {
-            return {
-              id: index,
-              nom: card.nom,
-              imageUrl: card.card_images[0].image_url,
-              type: card.type,
-              descriptions: carte.descriptions,
-              prix: card.prix,
-              rarete: card.rarete,
-            };
-          });
-
-          setCardData(formattedCards);
-        } else {
-          console.error('Échec de la récupération des données de la carte');
-        }
+        const response = await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php');
+        setCardList(response.data.data);
       } catch (error) {
-        console.error('Erreur lors de la requête API :', error);
+        console.error('Erreur lors de la récupération de la liste de cartes Yu-Gi-Oh! :', error);
       }
     };
 
-    fetchCardData();
+    fetchData();
   }, []);
+
 
   return (
     <div>
-      <div style={gridContainerStyle}>
-        {cardData.map((card) => (
-          <div key={card.id} style={cardStyle}>
-            <h2>Nom : {card.nom}</h2>
-            <img src={card.imageUrl} alt={card.name} />
-            <p>Type : {card.type}</p>
-            <p>Descriptions : {card.descriptions}</p>
-            <p>prix : {card.prix}</p>
-            <p>rarete : {card.rarete}</p>
-            <button onClick={handleAddToCart}>Ajouter</button>
-          </div>
+      <h1>Yu-Gi-Oh! Card Liste</h1>
+      <ul>
+        {cardList.map((card, index) => (
+          <li key={index}>
+            {card.name}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
-}
+};
 
-export default MyComponent;
+export default YuGiOhCardList;

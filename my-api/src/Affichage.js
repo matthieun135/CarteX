@@ -21,7 +21,7 @@ const ListeCartesYuGiOh = () => {
     fetchData();
   }, []);
 
-  // Filtrer et trier les cartes en fonction des termes et des options de tri
+  // J'ai filter les nom et prix sur les carte sur l'api mais pas sur la base de données 
   const cartesFiltreesEtTrie = listeCartes
     .filter((carte) => carte.name.toLowerCase().includes(termeRecherche.toLowerCase()))
     .sort((a, b) => {

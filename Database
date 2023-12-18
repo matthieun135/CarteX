@@ -14,7 +14,7 @@ CREATE TABLE carte (
 );
 
 CREATE TABLE user (
-    -> id INT AUTO_INCREMENT PRIMARY KEY,
-    -> login VARCHAR(255) NOT NULL,
-    -> pwd VARCHAR(255) NOT NULL
-    -> );
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(255) NOT NULL,
+    pwd VARCHAR(255) NOT NULL
+     );

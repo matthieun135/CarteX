@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+</head>
+<body>
+    <h2>Bienvenue sur la page Connexion</h2>
+    <?php
+    if (isset($_POST["pseudo"])){
+        include("connexionBDD.php");
+        $requete = $connexion->query("SELECT * FROM user");
+        $utilisateur= $requete->fetchAll(PDO::FETCH_ASSOC);
+        for ($i=0; $i < sizeof($utilisateur); $i++) { 
+            if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"]) 
+            && password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
+                setcookie("role", $utilisateur[$i]["role"]);
+                header("Location: Carte.php");
+                exit;
+            }
+        }
+        echo("Nom déja enregistré.");
+    }
+    ?>
+<form method="post" action="connexion.php">
+    <label for="pseudo">Pseudo :</label>
+    <input type="text" id="pseudo" name="pseudo" required><br>
+    <label for="mot_de_passe" required>Mot de passe :</label>
+    <input type="password" id="mot_de_passe" name="mot_de_passe" required><br>
+    <input type="submit" value="Valider">
+</form>
+</body>
+</html>

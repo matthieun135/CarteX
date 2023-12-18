@@ -7,9 +7,24 @@ body {
     padding: 0;
 }
 
+.bouton{
+    background-color: #6afcfc92;
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 10px ;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 h2 {
     text-align: center;
-    color: #dadadad7;
+    text-decoration: underline;
+    text-decoration-color: #000000;
+    color: #ffffff;
     font-size: 30px;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;

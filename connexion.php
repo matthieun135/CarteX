@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="connexion.css">
     <title>Connexion</title>
 </head>
 <body>
+    <a href="Accueil.html"><button class="bouton" id="btn-Accueil">Accueil</button></a>
     <h2>Bienvenue sur la page Connexion</h2>
+    <form method="post" action="connexion.php"> 
     <?php
+    unset($_COOKIE["rang"]);
     if (isset($_POST["pseudo"])){
         include("connexionBDD.php");
         $requete = $connexion->query("SELECT * FROM user");
@@ -15,15 +19,15 @@
         for ($i=0; $i < sizeof($utilisateur); $i++) { 
             if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"]) 
             && password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
-                setcookie("role", $utilisateur[$i]["role"]);
+                $rang= $utilisateur[$i]["rang"];
+                setcookie("rang", $rang);
                 header("Location: Carte.php");
                 exit;
             }
         }
-        echo("Nom déja enregistré.");
+        echo("<h3>*Pseudo ou mot de passe incorect!</h3>");
     }
     ?>
-<form method="post" action="connexion.php">
     <label for="pseudo">Pseudo :</label>
     <input type="text" id="pseudo" name="pseudo" required><br>
     <label for="mot_de_passe" required>Mot de passe :</label>

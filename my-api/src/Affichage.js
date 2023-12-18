@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ListeCartesYuGiOh = () => {
+const Liste_Cartes = () => {
   const [listeCartes, setListeCartes] = useState([]);
   const [termeRecherche, setTermeRecherche] = useState('');
   const [typeFiltre, setTypeFiltre] = useState('nom'); // tri par nom
-  const [ordreTri, setOrdreTri] = useState('asc'); // tri croissant
+  const [ordre_de_Tri, setOrdreTri] = useState('asc'); // tri par odre croissant
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php');
-        const cartes = response.data.data.slice(0, 300); // Limiter à seulement les 300 premières cartes
+        const cartes = response.data.data.slice(0, 300); // j'ai limiter à seulement les 300 premières cartes car sinon ca lague
         setListeCartes(cartes);
       } catch (erreur) {
         console.error('Erreur lors de la récupération de la liste de cartes Yu-Gi-Oh! :', erreur);
@@ -21,21 +21,17 @@ const ListeCartesYuGiOh = () => {
     fetchData();
   }, []);
 
-  // J'ai filter les nom et prix sur les carte sur l'api mais pas sur la base de données 
-  const cartesFiltreesEtTrie = listeCartes
+  // 
+  const cartes_Filtrees_Et_Trie = listeCartes
     .filter((carte) => carte.name.toLowerCase().includes(termeRecherche.toLowerCase()))
     .sort((a, b) => {
       switch (typeFiltre) {
         case 'nom':
-          return ordreTri === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+          return ordre_de_Tri === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
         case 'prix':
           const prixA = a.card_prices ? parseFloat(a.card_prices[0].cardmarket_price) : 0;
           const prixB = b.card_prices ? parseFloat(b.card_prices[0].cardmarket_price) : 0;
-          return ordreTri === 'asc' ? prixA - prixB : prixB - prixA;
-        case 'rarete':
-          const rareteA = a.card_prices ? a.card_prices[0].rarity : 'N/A';
-          const rareteB = b.card_prices ? b.card_prices[0].rarity : 'N/A';
-          return ordreTri === 'asc' ? rareteA.localeCompare(rareteB) : rareteB.localeCompare(rareteA);
+          return ordre_de_Tri === 'asc' ? prixA - prixB : prixB - prixA;
         default:
           return 0;
       }
@@ -60,12 +56,11 @@ const ListeCartesYuGiOh = () => {
           <select value={typeFiltre} onChange={(e) => setTypeFiltre(e.target.value)}>
             <option value="nom">Nom</option>
             <option value="prix">Prix</option>
-            <option value="rarete">Rareté</option>
           </select>
         </label>
         <label>
           Ordre :
-          <select value={ordreTri} onChange={(e) => setOrdreTri(e.target.value)}>
+          <select value={ordre_de_Tri} onChange={(e) => setOrdreTri(e.target.value)}>
             <option value="asc">Croissant</option>
             <option value="desc">Décroissant</option>
           </select>
@@ -73,11 +68,10 @@ const ListeCartesYuGiOh = () => {
       </div>
 
       <ul>
-        {cartesFiltreesEtTrie.map((carte) => (
+        {cartes_Filtrees_Et_Trie.map((carte) => (
           <li key={carte.id}>
             <img src={carte.card_images[0].image_url} alt={carte.name} />
             <div>
-              <p>ID : {carte.id}</p>
               <p>Nom : {carte.name}</p>
               <p>Prix : {carte.card_prices ? carte.card_prices[0].cardmarket_price : 'N/A'}</p>
             </div>
@@ -87,7 +81,5 @@ const ListeCartesYuGiOh = () => {
     </div>
   );
 };
-  
 
-export default ListeCartesYuGiOh;
-
+export default Liste_Cartes;

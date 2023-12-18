@@ -1,4 +1,4 @@
-create databse CarteX;
+create database CarteX;
 
 use CarteX; 
 
@@ -16,5 +16,6 @@ CREATE TABLE carte (
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     identifiant VARCHAR(255) NOT NULL,
-    pwd VARCHAR(255) NOT NULL
+    pwd VARCHAR(255) NOT NULL,
+    role Varchar(225)
     );

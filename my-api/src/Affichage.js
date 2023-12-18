@@ -67,6 +67,7 @@ const Liste_Cartes = () => {
         </label>
       </div>
 
+            
       <ul>
         {cartes_Filtrees_Et_Trie.map((carte) => (
           <li key={carte.id}>

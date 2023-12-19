@@ -4,15 +4,14 @@ import axios from 'axios';
 const Liste_Cartes = () => {
   const [listeCartes, setListeCartes] = useState([]);
   const [termeRecherche, setTermeRecherche] = useState('');
-  const [typeFiltre, setTypeFiltre] = useState('nom'); // tri par nom
-  const [ordre_de_Tri, setOrdreTri] = useState('asc'); // tri par odre croissant
+  const [typeFiltre, setTypeFiltre] = useState('nom');
+  const [ordre_de_Tri, setOrdreTri] = useState('asc');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php');
-        const cartes = response.data.data.slice(0, 300); // j'ai limiter à seulement les 300 premières cartes car sinon ca lague
-        setListeCartes(cartes);
+        const response = await axios.get('http://localhost:3001/api/cartes');
+        setListeCartes(response.data);
       } catch (erreur) {
         console.error('Erreur lors de la récupération de la liste de cartes Yu-Gi-Oh! :', erreur);
       }
@@ -21,16 +20,15 @@ const Liste_Cartes = () => {
     fetchData();
   }, []);
 
-  // 
   const cartes_Filtrees_Et_Trie = listeCartes
-    .filter((carte) => carte.name.toLowerCase().includes(termeRecherche.toLowerCase()))
+    .filter((carte) => carte.nom.toLowerCase().includes(termeRecherche.toLowerCase()))
     .sort((a, b) => {
       switch (typeFiltre) {
         case 'nom':
-          return ordre_de_Tri === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+          return ordre_de_Tri === 'asc' ? a.nom.localeCompare(b.nom) : b.nom.localeCompare(a.nom);
         case 'prix':
-          const prixA = a.card_prices ? parseFloat(a.card_prices[0].cardmarket_price) : 0;
-          const prixB = b.card_prices ? parseFloat(b.card_prices[0].cardmarket_price) : 0;
+          const prixA = a.Prix ? parseFloat(a.Prix) : 0;
+          const prixB = b.Prix ? parseFloat(b.Prix) : 0;
           return ordre_de_Tri === 'asc' ? prixA - prixB : prixB - prixA;
         default:
           return 0;
@@ -67,14 +65,13 @@ const Liste_Cartes = () => {
         </label>
       </div>
 
-            
       <ul>
         {cartes_Filtrees_Et_Trie.map((carte) => (
           <li key={carte.id}>
-            <img src={carte.card_images[0].image_url} alt={carte.name} />
+            <img src={carte.image_carte} alt={carte.nom} />
             <div>
-              <p>Nom : {carte.name}</p>
-              <p>Prix : {carte.card_prices ? carte.card_prices[0].cardmarket_price : 'N/A'}</p>
+              <p>Nom : {carte.nom}</p>
+              <p>Prix : {carte.Prix ? carte.Prix : 'N/A'}</p>
             </div>
           </li>
         ))}

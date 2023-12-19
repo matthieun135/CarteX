@@ -6,11 +6,11 @@ CREATE TABLE carte (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
     type VARCHAR(50),
-    image_url VARCHAR(255),
+    image_carte VARCHAR(255),
     niveau INT,
     description TEXT,
-    prix DECIMAL(10, 2),
-    rarete VARCHAR(20)
+    Prix DECIMAL(10, 2),
+    rarete VARCHAR(255)
 );
 
 CREATE TABLE user (

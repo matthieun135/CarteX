@@ -19,17 +19,22 @@ const Liste_Cartes = () => {
 
     fetchData();
   }, []);
-
+  // Cela filtre la liste de cartes en fonction du nom qu'on recherche
   const cartes_Filtrees_Et_Trie = listeCartes
     .filter((carte) => carte.nom.toLowerCase().includes(termeRecherche.toLowerCase()))
     .sort((a, b) => {
       switch (typeFiltre) {
+        // Cela trie par nom, soit en ordre croissant, soit en ordre decroissant
         case 'nom':
           return ordre_de_Tri === 'asc' ? a.nom.localeCompare(b.nom) : b.nom.localeCompare(a.nom);
+          // Cela trie par prix, en convertissant les prix en nombres décimaux
         case 'prix':
           const prixA = a.Prix ? parseFloat(a.Prix) : 0;
           const prixB = b.Prix ? parseFloat(b.Prix) : 0;
           return ordre_de_Tri === 'asc' ? prixA - prixB : prixB - prixA;
+           // Cela trie par type, soit en ordre croissant, soit en ordre decroissant
+        case 'type':
+          return ordre_de_Tri === 'asc' ? a.type.localeCompare(b.type) : b.type.localeCompare(a.type);
         default:
           return 0;
       }
@@ -47,13 +52,14 @@ const Liste_Cartes = () => {
         onChange={(e) => setTermeRecherche(e.target.value)}
       />
 
-      {/* Options de tri */}
+      {/* C'est une options de tri */}
       <div>
         <label>
           Trier par :
           <select value={typeFiltre} onChange={(e) => setTypeFiltre(e.target.value)}>
             <option value="nom">Nom</option>
             <option value="prix">Prix</option>
+            <option value="type">Type</option>
           </select>
         </label>
         <label>
@@ -71,7 +77,8 @@ const Liste_Cartes = () => {
             <img src={carte.image_carte} alt={carte.nom} />
             <div>
               <p>Nom : {carte.nom}</p>
-              <p>Prix : {carte.Prix ? carte.Prix : 'N/A'}</p>
+              <p>Prix : {carte.Prix ? carte.Prix : [0]}</p>
+              <p>Type : {carte.type}</p>
             </div>
           </li>
         ))}

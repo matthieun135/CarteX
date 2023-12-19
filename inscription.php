@@ -12,32 +12,19 @@
     <?php
     unset($_COOKIE["rang"]);
     if (isset($_POST["pseudo"])){
-<<<<<<< HEAD
-        $exist=false;
-=======
         unset($_COOKIE["role"]);
         $exist=FALSE;
->>>>>>> 54946ae182a2105dbb3cea52ed606b3c9a328a04
         include("connexionBDD.php");
         $requete = $connexion->query("SELECT * FROM user");
         $utilisateur= $requete->fetchAll(PDO::FETCH_ASSOC);
         for ($i=0; $i < sizeof($utilisateur); $i++) { 
             if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"]) 
-<<<<<<< HEAD
-            && password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
-                $exist=true;
-                break;
-            }
-        }
-        if (!$exist){
-=======
             || password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
                 $exist=True;
                 break;
             }
         }
         if(!$exist){
->>>>>>> 54946ae182a2105dbb3cea52ed606b3c9a328a04
             $requete= $connexion->prepare("INSERT INTO user (identifiant,pwd,rang)  VALUES (?,?,?)");
             $identifiant=password_hash($_POST["pseudo"], PASSWORD_DEFAULT);
             $pwd=password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
@@ -46,12 +33,6 @@
             setcookie("rang", "utilisateur");
             header("Location: Carte.php");
         }
-<<<<<<< HEAD
-        else{
-            echo("<h3>*Pseudo déjà utilisé!</h3>");
-        }
-=======
->>>>>>> 54946ae182a2105dbb3cea52ed606b3c9a328a04
     }
     ?>
 <form method="post" action="inscription.php">

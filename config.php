@@ -1,7 +1,6 @@
 <?php
-$DB_hote = "";
-$DB_utilisateur="";
-$DB_motDePasse="";
-$DB_nomDeLaBase="";
-
+$DB_hote = "localhost";
+$DB_utilisateur="radu";
+$DB_motDePasse="radu";
+$DB_nomDeLaBase="CarteX";
 ?>

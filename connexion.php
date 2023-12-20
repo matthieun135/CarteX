@@ -11,7 +11,6 @@
     <h2>Bienvenue sur la page Connexion</h2>
     <form method="post" action="connexion.php"> 
     <?php
-    unset($_COOKIE["rang"]);
     if (isset($_POST["pseudo"])){
         include("connexionBDD.php");
         $requete = $connexion->query("SELECT * FROM user");
@@ -20,7 +19,9 @@
             if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"]) 
             && password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
                 $rang= $utilisateur[$i]["rang"];
+                $pseudo= $_POST["pseudo"];
                 setcookie("rang", $rang);
+                setcookie("pseudo",$pseudo);
                 header("Location: Carte.php");
                 exit;
             }

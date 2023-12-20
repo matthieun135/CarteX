@@ -20,7 +20,7 @@ CREATE TABLE user (
     rang Varchar(225)
     );
 
-MariaDB [cartex]> create table deck(
+create table deck(
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_carte INT,
     id_user INT);

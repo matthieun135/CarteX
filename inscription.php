@@ -10,7 +10,6 @@
     <a href="Accueil.html"><button class="bouton" id="btn-Accueil">Accueil</button></a>
     <h2>Bienvenue sur la page Inscription</h2>
     <?php
-    unset($_COOKIE["rang"]);
     if (isset($_POST["pseudo"])){
         unset($_COOKIE["role"]);
         $exist=FALSE;
@@ -30,7 +29,9 @@
             $pwd=password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
             $rang="utilisateur";
             $requete->execute([$identifiant,$pwd,$rang]);
+            $pseudo= $_POST["pseudo"];
             setcookie("rang", "utilisateur");
+            setcookie("pseudo",$pseudo);
             header("Location: Carte.php");
         }
     }

@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a0a0a0;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.detail-carte {
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.contenu-cadre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form:last-child {
+    margin-top: 10px;
+}
+
+.image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-carte {
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+}

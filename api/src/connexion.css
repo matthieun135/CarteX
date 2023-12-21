@@ -7,6 +7,17 @@ body {
     padding: 0;
 }
 
+<<<<<<< HEAD
+=======
+h2 {
+    text-align: center;
+    color: #dadadad7;
+    font-size: 30px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 50px;
+}
+>>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
 .bouton{
     background-color: #6afcfc92;
     border: none;
@@ -20,6 +31,7 @@ body {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 h2 {
     text-align: center;
     text-decoration: underline;
@@ -31,6 +43,8 @@ h2 {
     margin-top: 50px;
 }
 
+=======
+>>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
 form {
     opacity: 0.7;
     margin-top: 15%;

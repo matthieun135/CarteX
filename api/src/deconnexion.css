@@ -1,23 +1,19 @@
 .bouton {
-    background-color: #8e3e3e;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    margin: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    text-align: left;
+    margin-top: 20px;
+    
+}
+
+.bouton {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
     font-size: 16px;
+    border: none;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .bouton:hover {
-    background-color: #8e6e3e;
-}
-
-.bouton:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+    background-color: #cc0000;
 }

@@ -3,7 +3,7 @@ include "deconnexion.php";
 
 //redirige vers la page accueil si la personne connectée n'est pas un admin.
 if (isset($_COOKIE["rang"]) && $_COOKIE["rang"] == "utilisateur") {
-    header("Location: Connecte.php");
+    header("Location: Carte.php");
 }
 
 if (isset($_POST["nom"]) && !empty($_POST["nom"])) {
@@ -52,7 +52,8 @@ if (isset($_POST["nom"]) && !empty($_POST["nom"])) {
 </head>
 <body>
     <a href="Carte.php"><button class="bouton" id="btn-Accueil">Carte</button></a>
-    <h1>Bienvenue, quelle carte souhaitez-vous ajouter.</h1>
+    <h1>Bienvenue, quelle carte souhaitez-vous ajouter ?</h1>
+
     <form method="POST" action="AjoutCarte.php">
 
     <label for="nom">Nom :</label>

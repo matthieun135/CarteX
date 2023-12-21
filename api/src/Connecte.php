@@ -10,6 +10,9 @@
     <?php
         include "deconexion.php";
         include "VerrificationsRole.php";
+        if($_COOKIE['rang']=="administrateur"){
+            echo("<a href='AjoutCarte.php' class='bouton'>Pannel Admin</a>");
+}
     ?>
     <div id="welcomeMessage">
         <h1>Bonjour, 
@@ -26,8 +29,4 @@
     </div>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> e6404440d55d2d92bbf346c842aad0677203207e

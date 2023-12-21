@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="mondeck.css">
 <?php
 include "VerrificationsRole.php";
 include "connexionBDD.php";
@@ -49,6 +50,8 @@ if (isset($_POST['supprimer_deck'])) {
             $requete3->execute([$cartedeck["id_carte"]]);
             $carte= $requete3->fetch();
             echo "<div>";
+            echo "<div class='detail-carte'>";
+            echo "<div class='contenu-cadre'>";
             echo "<h2>{$carte['nom']}</h2>";
             echo "<p>Type : {$carte['type']}</p>";
             if($carte['niveau']!=NULL){
@@ -62,8 +65,10 @@ if (isset($_POST['supprimer_deck'])) {
             // Affichage de la rareté même s'il a une valeur de 0
             $rarete = isset($carte['rarete']) ? $carte['rarete'] : 0;
             echo "<p>Rareté : {$rarete}</p>";
-
+            echo "</div>";
+            echo "</div>";
             // Affichage des images
+            echo "<div class='image-carte'>";
             echo "<img src='{$carte['image_carte']}' alt='{$carte['nom']}' />";
             echo("</form>");
             echo("<form method='post' action='mon_deck.php'>");
@@ -71,7 +76,8 @@ if (isset($_POST['supprimer_deck'])) {
             echo("<button type='submit' name='supprimer'>Supprimer</button>");
             echo("</form>");
             echo("</div>");
-    }
+            echo "</div>";
+        }
     ?>
 </body>
 </html>

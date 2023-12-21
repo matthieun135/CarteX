@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="deconnexion.css">
+<div >
 <form method="post">
-        <input type="submit" name="deconnexion" classname="deconnexion"
-        class="deconnexion" value="deconnexion" />
+        <input type="submit" name="deconnexion" class = "bouton" value="deconnexion" />
 </form>
+</div>
 <?php
 function deconnexion(){
     unset($_COOKIE["rang"]);

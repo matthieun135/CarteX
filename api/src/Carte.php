@@ -1,4 +1,6 @@
+<link rel="stylesheet" href="Carte.css">
 <?php
+include "VerrificationsRole.php";
 // Inclure le fichier de connexion à la base de données
 include "connexionBDD.php";
 if (isset($_POST['submit_supprimer'])) {
@@ -60,22 +62,26 @@ $cartes = $requete->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Carte.css">
     <title>Liste des Cartes</title>
-    <style>
-    </style>
 </head>
 <body>
+    <div class = "carte">
+    <div class = "retour">
     <?php
         include "deconexion.php";
     ?>
-    <a href="Connecte.php">Retour au menu.</a>
+    <a href="Connecte.php" class="button">Retour au menu</a>
+    </div>
 
-    <h1>Liste des Cartes</h1>
+    <h1 class = "h1">Liste des Cartes</h1>
 
     <!-- c'est un formulaire de filtres -->
     <form method="get" action="">
+        <div class = "recherche">
         <label for="termeRecherche">Rechercher par nom :</label>
         <input type="text" name="termeRecherche" value="<?= $terme_Recherche ?>">
+        </div>
 
         <label for="typeFiltre">Trier par :</label>
         <select name="typeFiltre">
@@ -99,12 +105,13 @@ $cartes = $requete->fetchAll(PDO::FETCH_ASSOC);
         foreach ($cartes as $carte) {
             // Afficher les détails de chaque carte
             echo "<div>";
+            echo "<div class='detail-carte'>";
+            echo "<div class='contenu-cadre'>";
             echo "<h2>{$carte['nom']}</h2>";
             echo "<p>Type : {$carte['type']}</p>";
             if($carte['niveau']!=NULL){
                 echo "<p>Niveau : {$carte['niveau']}</p>";
             }
-            
             // Affichage du prix même s'il a une valeur de  0
             $prix = isset($carte['prix']) ? $carte['prix'] : 0;
             echo "<p>Prix : {$prix}</p>";
@@ -112,6 +119,8 @@ $cartes = $requete->fetchAll(PDO::FETCH_ASSOC);
             // Affichage de la rareté même s'il a une valeur de 0
             $rarete = isset($carte['rarete']) ? $carte['rarete'] : 0;
             echo "<p>Rareté : {$rarete}</p>";
+            echo "</div>";
+            echo "</div>";
 
             // Affichage des images
             echo "<img src='{$carte['image_carte']}' alt='{$carte['nom']}' />";
@@ -136,5 +145,6 @@ $cartes = $requete->fetchAll(PDO::FETCH_ASSOC);
         echo "<p>Aucune carte n'a été trouvée.</p>";
     }
     ?>
+    </div>
 </body>
 </html>

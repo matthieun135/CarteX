@@ -1,16 +1,10 @@
 body{
-<<<<<<< HEAD
     background-image: url("Images/dragon.jpg");
     background-size: cover;
-=======
-    background-image: url("Images/dragon");
-    background-size: cover; 
->>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
     background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 1.5;
-<<<<<<< HEAD
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -28,26 +22,6 @@ body{
 
 .bouton{
     background-color: #3e8e8d;
-=======
-    color: #000000;
-    margin: 0;
-    padding: 0;
-}
-.container {
-    max-height: 300;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.bouton{
-    background-color: #afaf4c;
->>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
     border: none;
     color: white;
     padding: 15px 32px;
@@ -60,11 +34,7 @@ body{
 }
 
 .bouton:hover{
-<<<<<<< HEAD
     background-color: #8e3e3e;
-=======
-    background-color: #8e7b3e;
->>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
 }
 
 .button:active{
@@ -75,18 +45,11 @@ body{
 
 h1 {
     text-align: center;
-<<<<<<< HEAD
     color: #ffffff;
-=======
-    color: #333;
->>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
 }
 
 p {
     text-align: center;
-<<<<<<< HEAD
     color: #c4c4c4;
-=======
     color: #666;
->>>>>>> e6404440d55d2d92bbf346c842aad0677203207e
 }

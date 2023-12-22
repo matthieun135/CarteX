@@ -3,7 +3,7 @@ Il vous faut WampServer installer sur https://www.wampserver.com/ si vous ne l'a
 Installer le fichier API dans wamp/www puis faites les étapes suivante.</br>
 Dans un terminal Maria DB Copiez coller tout le fichier DATABASE</br>
 # Fichier a cré et remplir dans le dossier src
--config.php:
+-config.php:</br>
 $DB_hote = "";</br>
 $DB_utilisateur="";</br>
 $DB_motDePasse="";</br>

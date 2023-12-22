@@ -9,7 +9,7 @@ CREATE TABLE carte (
     image_carte VARCHAR(255),
     niveau INT,
     description TEXT,
-    Prix DECIMAL(10, 2),
+    prix DECIMAL(10, 2),
     rarete VARCHAR(255)
 );
 

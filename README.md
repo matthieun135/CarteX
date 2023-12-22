@@ -1,3 +1,8 @@
+# Nom des utilisateurs
+satosakisato : Radu
+Mahtieu
+kkkkhaola: khaola
+Nakavasi: Maxance Mangeret
 # Explication 
 Il vous faut WampServer installer sur https://www.wampserver.com/ si vous ne l'avez pas.</br>
 Installer le fichier API dans wamp/www puis faites les étapes suivante.</br>

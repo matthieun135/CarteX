@@ -14,6 +14,7 @@
             echo("<a href='AjoutCarte.php' class='bouton'>Pannel Admin</a>");
 }
     ?>
+    <a href='AjoutCarte.php' class='bouton'>Ajout de carte</a>
     <div id="welcomeMessage">
         <h1>Bonjour, 
             <?php

@@ -1,10 +1,7 @@
 <link rel="stylesheet" href="AjoutCarte.css">
 <?php
 
-//redirige vers la page accueil si la personne connectée n'est pas un admin.
-if (isset($_COOKIE["rang"]) && $_COOKIE["rang"] == "utilisateur") {
-    header("Location: Connecte.php");
-}
+include "VerrificationsRole.php";
 
 if (isset($_POST["nom"]) && !empty($_POST["nom"])) {
     include "connexionBDD.php";

@@ -8,9 +8,10 @@
 </head>
 <body>
     <?php
+        // rajout d'un bouton deconexion
         include "deconexion.php";
+        // Verifie si la personne est connecte
         include "VerrificationsRole.php";
-    
     ?>
     <a href='AjoutCarte.php' class='bouton'>Ajout de carte</a>
     <div id="welcomeMessage">

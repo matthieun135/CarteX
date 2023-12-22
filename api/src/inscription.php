@@ -16,13 +16,14 @@
         include("connexionBDD.php");
         $requete = $connexion->query("SELECT * FROM user");
         $utilisateur= $requete->fetchAll(PDO::FETCH_ASSOC);
+        //Vérifie si un utilisateur avec cette identifiant existe déja.
         for ($i=0; $i < sizeof($utilisateur); $i++) { 
-            if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"]) 
-            || password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
+            if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"])){
                 $exist=True;
                 break;
             }
         }
+        //Si il n'existe pas rajoute dans la BDD et envoie dans la page d'accueil.
         if(!$exist){
             $requete= $connexion->prepare("INSERT INTO user (identifiant,pwd,rang)  VALUES (?,?,?)");
             $identifiant=password_hash($_POST["pseudo"], PASSWORD_DEFAULT);
@@ -32,7 +33,7 @@
             $pseudo= $_POST["pseudo"];
             setcookie("rang", "utilisateur");
             setcookie("pseudo",$pseudo);
-            header("Location: Carte.php");
+            header("Location: Connecte.php");
         }
     }
     ?>

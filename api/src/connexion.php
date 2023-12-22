@@ -15,6 +15,7 @@
         include("connexionBDD.php");
         $requete = $connexion->query("SELECT * FROM user");
         $utilisateur= $requete->fetchAll(PDO::FETCH_ASSOC);
+        //Vérifie si pour chaque utilisateur dans la BDD si les donnée rentrer correspond
         for ($i=0; $i < sizeof($utilisateur); $i++) { 
             if (password_verify($_POST["pseudo"], $utilisateur[$i]["identifiant"]) 
             && password_verify($_POST["mot_de_passe"], $utilisateur[$i]["pwd"])){
@@ -26,6 +27,7 @@
                 exit;
             }
         }
+        //Si les rentré rentré sont éroné préviens l'utilisateur
         echo("<h3>*Pseudo ou mot de passe incorect!</h3>");
     }
     ?>

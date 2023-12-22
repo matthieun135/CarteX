@@ -4,19 +4,18 @@ Installer le fichier API dans wamp/www puis faites les étapes suivante.</br>
 Dans un terminal Maria DB Copiez coller tout le fichier DATABASE</br>
 # Fichier a cré et remplir dans le dossier src
 -config.php:
-"<?php
 $DB_hote = "";
 $DB_utilisateur="";
 $DB_motDePasse="";
 $DB_nomDeLaBase="";
-?>"
 
--.env
-DB_HOST=""
-DB_USER=""
-DB_PASSWORD=""
-DB_DATABASE=""
-DB_PORT=
+
+-.env </br>
+DB_HOST="" </br>
+DB_USER="" </br>
+DB_PASSWORD="" </br>
+DB_DATABASE="" </br>
+DB_PORT= </br>
 
 # Commande a faire
 -Lancer un terminal dans le fichier api puis tapez la commande "npm install"</br>

@@ -1,0 +1,30 @@
+create database CarteX;
+
+use CarteX; 
+
+CREATE TABLE carte (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    type VARCHAR(50),
+    image_carte VARCHAR(255),
+    niveau INT,
+    description TEXT,
+    Prix DECIMAL(10, 2),
+    rarete VARCHAR(255)
+);
+
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    identifiant VARCHAR(255) NOT NULL,
+    pwd VARCHAR(255) NOT NULL,
+    rang Varchar(225)
+    );
+
+create table deck(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_carte INT,
+    id_user INT);
+
+
+INSERT INTO user (identifiant,pwd,rang)  VALUES ("$2y$10$gtpLykFA8I0VsKAFuHpliuOT14NxYs2DMSlSl0zqA/gu.VgOE5tzm","$2y$10$I.3Ubtn3xnq6s4BFp17CdO/R85rQi2TO20yt.bTwWakLMEuKkfM8K","administrateur")
+ 
